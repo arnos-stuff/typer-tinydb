@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://arnos-stuff.github.io/typer-tinydb/index.html</loc>
+         <loc>https://pkg.arnov.dev/docs/typer-tinydb/</loc>
          <lastmod>2023-04-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://arnos-stuff.github.io/typer-tinydb/about.html</loc>
+         <loc>https://pkg.arnov.dev/docs/typer-tinydb/about/</loc>
          <lastmod>2023-04-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://arnos-stuff.github.io/typer-tinydb/commands.html</loc>
+         <loc>https://pkg.arnov.dev/docs/typer-tinydb/commands/</loc>
          <lastmod>2023-04-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://arnos-stuff.github.io/typer-tinydb/future-work.html</loc>
+         <loc>https://pkg.arnov.dev/docs/typer-tinydb/future-work/</loc>
          <lastmod>2023-04-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
