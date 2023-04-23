@@ -1,10 +1,11 @@
 [tool.poetry]
 name = "typer-tinydb"
-version = "0.1.0"
-description = ""
+version = "0.1.1"
+description = "A Python Typer CLI subcommand boilerplate to manage config files using tinydb"
 authors = ["arnos-stuff <bcda0276@gmail.com>"]
 readme = "README.md"
 packages = [{include = "typer_tinydb"}]
+homepage = "https://arnos-stuff.github.io/typer-tinydb/"
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -19,6 +20,7 @@ tcfg = 'typer_tinydb.typerdb:cfg'
 
 [tool.poetry.group.dev.dependencies]
 mkdocs = "^1.4.2"
+mkdocs-dracula-theme = "^1.0.4"
 
 [build-system]
 requires = ["poetry-core"]

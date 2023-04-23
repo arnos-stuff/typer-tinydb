@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-        <title>Typer-TinyDB</title>
+        <title>Commands - Typer-TinyDB</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <meta name="description" content="None">
-        <link rel="canonical" href="https://arnos-stuff.github.io/typer-tinydb/index.html">
+        
+        <link rel="canonical" href="https://arnos-stuff.github.io/typer-tinydb/commands.html">
         
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -65,14 +65,14 @@
             
             <li class="drac-box">
                 <a href="index.html"
-                    class=" active 
+                    class="
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     Home
                 </a>
             </li>
             <li class="drac-box">
                 <a href="commands.html"
-                    class="
+                    class=" active 
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     Commands
                 </a>
@@ -119,13 +119,13 @@
         <div class="container">
             <div class="row row-preview">
                 <div class="col">
-                    <a 
-                        class="btn-preview drac-btn drac-text-white--hover disabled">
+                    <a href="index.html"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </div>
                 <div class="col">
-                    <a href="commands.html"
+                    <a href="future-work.html"
                         class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
@@ -164,66 +164,70 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h1 id="a-typer-config-file-getset-boilerplate">A Typer config file get/set boilerplate</h1>
-<h1 id="using-the-boilerplate">Using the boilerplate</h1>
-<h2 id="aliases-and-subcommands">Aliases and subcommands</h2>
-<p>We recommand the following aliases, which are readily available out of the box.</p>
+        <p><h1 id="commands">Commands</h1>
+<h2 id="command-typer-tinydb-config">Command <code>typer-tinydb-config</code></h2>
+<p>Configure the app 🛠️.</p>
+<p><strong>Usage</strong>:</p>
+<pre><code class="language-console">$ typer-tinydb-config [OPTIONS] COMMAND [ARGS]...
+</code></pre>
+<p><strong>Options</strong>:</p>
 <ul>
-<li><code>config</code></li>
-<li><code>cfg</code></li>
-<li><code>c</code></li>
+<li><code>--install-completion</code>: Install completion for the current shell.</li>
+<li><code>--show-completion</code>: Show completion for the current shell, to copy it or customize the installation.</li>
+<li><code>--help</code>: Show this message and exit.</li>
 </ul>
-<p>This way, if your app is named <code>super-app</code></p>
-<p>And is defined in <code>super_app.py</code> roughly as follows:</p>
-<pre><code class="language-python">
-import typer
-
-# ... some imports
-
-app = typer.Typer(
-    name='super-app',
-    # ... other args
-)
+<p><strong>Commands</strong>:</p>
+<ul>
+<li><code>get</code>: Get a config value.</li>
+<li><code>list</code>: List all config values.</li>
+<li><code>reset</code>: Reset all config values.</li>
+<li><code>set</code>: Set a config value.</li>
+</ul>
+<h3 id="command-typer-tinydb-config-get">Command <code>typer-tinydb-config get</code></h3>
+<p>Get a config value.</p>
+<p><strong>Usage</strong>:</p>
+<pre><code class="language-console">$ typer-tinydb-config get [OPTIONS] PARAM
 </code></pre>
-<p>You just have to add the following below:</p>
-<pre><code class="language-python">from typer_tinydb import cfg, config # those are typer apps
-
-app.add_typer(cfg) # the cfg app
-app.add_typer(config) # the config app
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>PARAM</code>: The parameter to get.  [required]</li>
+</ul>
+<p><strong>Options</strong>:</p>
+<ul>
+<li><code>--help</code>: Show this message and exit.</li>
+</ul>
+<h3 id="command-typer-tinydb-config-list">Command <code>typer-tinydb-config list</code></h3>
+<p>List all config values.</p>
+<p><strong>Usage</strong>:</p>
+<pre><code class="language-console">$ typer-tinydb-config list [OPTIONS]
 </code></pre>
-<p>You can rename them however you like by using</p>
-<pre><code class="language-python">app.add_typer(cfg, name='my-super-config')
+<p><strong>Options</strong>:</p>
+<ul>
+<li><code>--help</code>: Show this message and exit.</li>
+</ul>
+<h3 id="command-typer-tinydb-config-reset">Command <code>typer-tinydb-config reset</code></h3>
+<p>Reset all config values.</p>
+<p><strong>Usage</strong>:</p>
+<pre><code class="language-console">$ typer-tinydb-config reset [OPTIONS]
 </code></pre>
-<h2 id="using-it-on-the-command-line">Using it on the command line</h2>
-<p>With the same configuration as above, your new app can now run the commands:</p>
-<pre><code class="language-bash">super-app cfg list # list config key:value pairs
-super-app cfg get some-key # get the values linked to the key 'some-key'
-super-app cfg set some-key '20-hS407zuqYKQ8tPP2r5' # store some hash or token into your settings file
-super-app cfg set some-key '20-hS407zuqYKQ8tPP2r5'
+<p><strong>Options</strong>:</p>
+<ul>
+<li><code>--help</code>: Show this message and exit.</li>
+</ul>
+<h3 id="command-typer-tinydb-config-set">Command <code>typer-tinydb-config set</code></h3>
+<p>Set a config value.</p>
+<p><strong>Usage</strong>:</p>
+<pre><code class="language-console">$ typer-tinydb-config set [OPTIONS] PARAM VALUE
 </code></pre>
-<p>You can obviously use <code>super-app config get</code> and others, or any name you attribute to it.</p>
-<h2 id="using-it-within-python-modules">Using it within python modules</h2>
-<p>The CLI key-values are stored in a tinydb instance that is available by just importing the table named <code>globals</code>:</p>
-<pre><code class="language-python">from typer_tinydb import db, globals, where
-</code></pre>
-<p>You can create any table using the database object <code>db</code>, please <a href="https://tinydb.readthedocs.io/">check out the tinydb docs !</a></p>
-<p>To get the key just use <code>where</code> :</p>
-<pre><code class="language-python">returns = globals.search(where('param') == param)
-</code></pre>
-<p>To insert new values or update existing, use the <code>upsert</code> function:</p>
-<pre><code class="language-python">Param = Query()
-
-globals.upsert({
-    &quot;param&quot;: param,
-    &quot;value&quot;: value,
-    &quot;timestamp&quot;: datetime.now().strftime(&quot;%d/%m/%Y %H:%M:%S&quot;),
-    &quot;machine&quot;: socket.gethostname(),
-    },
-    Param.param == param
-)
-</code></pre>
-<h1 id="commands">Commands</h1>
-<p>Go check out the <a href="/docs/commands.md">commands page 🚀</a></p></p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>PARAM</code>: The parameter to set.  [required]</li>
+<li><code>VALUE</code>: The value to set the parameter to.  [required]</li>
+</ul>
+<p><strong>Options</strong>:</p>
+<ul>
+<li><code>--help</code>: Show this message and exit.</li>
+</ul></p>
     </article>
 </section>
             <!-- endblock -->

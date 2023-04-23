@@ -218,6 +218,21 @@ i18n = ["babel (>=2.9.0)"]
 min-versions = ["babel (==2.9.0)", "click (==7.0)", "colorama (==0.4)", "ghp-import (==1.0)", "importlib-metadata (==4.3)", "jinja2 (==2.11.1)", "markdown (==3.2.1)", "markupsafe (==2.0.1)", "mergedeep (==1.3.4)", "packaging (==20.5)", "pyyaml (==5.1)", "pyyaml-env-tag (==0.1)", "typing-extensions (==3.10)", "watchdog (==2.0)"]
 
 [[package]]
+name = "mkdocs-dracula-theme"
+version = "1.0.4"
+description = "🧛🏻‍♂️ Dark theme for Mkdocs"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "mkdocs-dracula-theme-1.0.4.tar.gz", hash = "sha256:4f3e438f1c15cc65a30a9b641440ed5c5e7a2727a89c1d1c3ce114b8d73beafa"},
+    {file = "mkdocs_dracula_theme-1.0.4-py3-none-any.whl", hash = "sha256:6d37ed62ff694062a4c2b066a24708f9f1a95e5e6a374b0d0c731861808be5b2"},
+]
+
+[package.dependencies]
+mkdocs = ">=1.4.2"
+
+[[package]]
 name = "packaging"
 version = "23.1"
 description = "Core utilities for Python packages"
@@ -462,4 +477,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "c6f09f1ea98d6c5ed02ad52559b5b85e924ce1f4d6bf8442d3a79e6fc2b19b79"
+content-hash = "017ca14fade510e8c409fc32c0d6b3df99972359f077175fde4c3f97a58eb1d0"

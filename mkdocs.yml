@@ -1,6 +1,15 @@
 site_name: Typer-TinyDB
-site_url: https://example.com/
+site_url: https://arnos-stuff.github.io/typer-tinydb/
 nav:
     - Home: index.md
+    - Commands: commands.md
+    - Contributing: future-work.md
     - About: about.md
-theme: readthedocs
+theme:
+  name: dracula
+repo_url: https://github.com/arnos-stuff/typer-tinydb
+
+docs_dir: docs
+use_directory_urls: false
+dev_addr: "127.0.0.1:8000"
+edit_uri: /typer-tinydb/
