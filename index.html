@@ -164,9 +164,9 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h1 id="a-typer-config-file-getset-boilerplate">A Typer config file get/set boilerplate</h1>
-<h1 id="using-the-boilerplate">Using the boilerplate</h1>
-<h2 id="aliases-and-subcommands">Aliases and subcommands</h2>
+        <p><h1 id="a-typer-config-file-getset-boilerplate">A Typer config file get/set boilerplate<a class="headerlink" href="#a-typer-config-file-getset-boilerplate" title="Permanent link">&para;</a></h1>
+<h1 id="using-the-boilerplate">Using the boilerplate<a class="headerlink" href="#using-the-boilerplate" title="Permanent link">&para;</a></h1>
+<h2 id="aliases-and-subcommands">Aliases and subcommands<a class="headerlink" href="#aliases-and-subcommands" title="Permanent link">&para;</a></h2>
 <p>We recommand the following aliases, which are readily available out of the box.</p>
 <ul>
 <li><code>config</code></li>
@@ -194,7 +194,7 @@ app.add_typer(config) # the config app
 <p>You can rename them however you like by using</p>
 <pre><code class="language-python">app.add_typer(cfg, name='my-super-config')
 </code></pre>
-<h2 id="using-it-on-the-command-line">Using it on the command line</h2>
+<h2 id="using-it-on-the-command-line">Using it on the command line<a class="headerlink" href="#using-it-on-the-command-line" title="Permanent link">&para;</a></h2>
 <p>With the same configuration as above, your new app can now run the commands:</p>
 <pre><code class="language-bash">super-app cfg list # list config key:value pairs
 super-app cfg get some-key # get the values linked to the key 'some-key'
@@ -202,7 +202,7 @@ super-app cfg set some-key '20-hS407zuqYKQ8tPP2r5' # store some hash or token in
 super-app cfg set some-key '20-hS407zuqYKQ8tPP2r5'
 </code></pre>
 <p>You can obviously use <code>super-app config get</code> and others, or any name you attribute to it.</p>
-<h2 id="using-it-within-python-modules">Using it within python modules</h2>
+<h2 id="using-it-within-python-modules">Using it within python modules<a class="headerlink" href="#using-it-within-python-modules" title="Permanent link">&para;</a></h2>
 <p>The CLI key-values are stored in a tinydb instance that is available by just importing the table named <code>globals</code>:</p>
 <pre><code class="language-python">from typer_tinydb import db, globals, where
 </code></pre>
@@ -222,7 +222,7 @@ globals.upsert({
     Param.param == param
 )
 </code></pre>
-<h1 id="commands">Commands</h1>
+<h1 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h1>
 <p>Go check out the <a href="/docs/commands.md">commands page 🚀</a></p></p>
     </article>
 </section>
