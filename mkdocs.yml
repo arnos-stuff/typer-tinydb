@@ -1,4 +1,6 @@
 site_name: Typer-TinyDB
+site_url: https://arnos-stuff.github.io/
+
 nav:
     - Home: index.md
     - Commands: commands.md
@@ -8,6 +10,10 @@ theme:
   name: dracula
   locale: en
   highlightjs: true
+
+dev_addr: "127.0.0.1:8000"
+
+site_dir: typer-tinydb/site
 
 repo_url: 'https://github.com/arnos-stuff/typer-tinydb/wiki'
 edit_uri_template: '{path_noext}/_edit'
