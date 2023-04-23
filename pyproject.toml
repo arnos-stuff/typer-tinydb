@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "typer-tinydb"
+version = "0.1.0"
+description = ""
+authors = ["arnos-stuff <bcda0276@gmail.com>"]
+readme = "README.md"
+packages = [{include = "typer_tinydb"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+typer = {extras = ["all"], version = "^0.7.0"}
+tinydb = "^4.7.1"
+
+
+[tool.poetry.scripts]
+typer-tinydb-config = 'typer_tinydb.typerdb:config'
+typer-configure = 'typer_tinydb.typerdb:config'
+tcfg = 'typer_tinydb.typerdb:cfg'
+
+[tool.poetry.group.dev.dependencies]
+mkdocs = "^1.4.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
