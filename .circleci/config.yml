@@ -40,7 +40,7 @@ jobs:
           at: /tmp/workspace
       - codecov/upload:
           file: /tmp/workspace/coverage.xml
-          token: CODECOV_TOKEN
+          token: CODECOV_REPO_TOKEN
   build_publish:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/configuration-reference/#executor-job
@@ -52,9 +52,12 @@ jobs:
           pkg-manager: poetry
       - run:
           command: |
+            echo '[pypi]\n' > $HOME/.pypirc
+            echo 'username = __token__\n' >> $HOME/.pypirc
+            echo 'password = ${GLOBAL_PYPI_TOKEN}\n' >> $HOME/.pypirc
             poetry version patch
             poetry build
-            poetry config http-basic.pypi "__token__" "pypi-${PYPI_TOKEN}"
+            poetry config http-basic.pypi "__token__" "${GLOBAL_PYPI_TOKEN}"
             poetry publish
           name: Test it
 
