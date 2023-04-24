@@ -652,6 +652,23 @@
 <a id="__codelineno-1-82" name="__codelineno-1-82"></a><span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material/brightness-7</span>
 <a id="__codelineno-1-83" name="__codelineno-1-83"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Switch to dark mode</span>
 </code></pre></div></td></tr></table></div>
+<h1 id="versioning-your-docs">Versioning your docs<a class="headerlink" href="#versioning-your-docs" title="Permanent link">&para;</a></h1>
+<p>When you only have a simple app and care little about versioning, you can just go ahead and manually do</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>mkdocs<span class="w"> </span>build
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>mkdocs<span class="w"> </span>gh-deploy
+</code></pre></div></td></tr></table></div>
+<p>But if you want to have versioning on your blog info, you <strong>have to know</strong> these two:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>mike<span class="w"> </span>deploy<span class="w"> </span>--push<span class="w"> </span>--update-aliases<span class="w"> </span><span class="m">0</span>.1.5<span class="w"> </span>latest
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>mike<span class="w"> </span>set-default<span class="w"> </span><span class="m">0</span>.1.5
+</code></pre></div></td></tr></table></div>
+<p>Which makes you increment &amp; publish at the same time from 0.1.4 to 0.1.5, obviously the next shot is going to be</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>mike<span class="w"> </span>deploy<span class="w"> </span>--push<span class="w"> </span>--update-aliases<span class="w"> </span><span class="m">0</span>.1.6<span class="w"> </span>latest
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>mike<span class="w"> </span>set-default<span class="w"> </span><span class="m">0</span>.1.6
+</code></pre></div></td></tr></table></div>
+<p>Unless 0.1.6 isn't stable.</p>
 
 
 
