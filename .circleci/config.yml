@@ -18,10 +18,13 @@ jobs:
       - python/install-packages:
           pkg-manager: poetry
           cache-version: v2
+          store_artifacts: 
           include-python-in-cache-key: false
       - run:
           command: |
             poetry run pytest --cov=./ --cov-report=xml
+            mkdir -p /tmp/artifacts/
+            mv coverage.xml /tmp/artifacts/coverage.xml
           name: Test it
   codecov-job:
     docker:
@@ -29,7 +32,7 @@ jobs:
       - image: cimg/python:3.10
     steps:
       - codecov/upload:
-          file: coverage.xml 
+          file: /tmp/artifacts/coverage.xml
           token: CODECOV_TOKEN
   build_publish:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
