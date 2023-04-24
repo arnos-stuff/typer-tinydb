@@ -34,6 +34,9 @@ jobs:
     docker:
       # replace with your preferred image
       - image: cimg/python:3.10
+    
+    requires:
+      - install_and_test
     steps:
       - attach_workspace:
           name: fetch the codecov file
