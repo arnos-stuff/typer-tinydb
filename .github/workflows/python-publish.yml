@@ -20,7 +20,7 @@ permissions:
   contents: read
   
 env:
-  PY_VER: 3.10
+  PYTHON_VER: 3.10
   POETRY_VER: 1.4
 
 jobs:
@@ -32,12 +32,12 @@ jobs:
 
         uses: actions/setup-python@v3
         with:
-          python-version: ${{ PY_VER }}
+          python-version: $PYTHON_VER
       - uses: actions/checkout@v3
       - name: Poetry build and publish image
         uses: abatilo/actions-poetry@v2
         with:
-          poetry-version: ${{ POETRY_VER }}
+          poetry-version: $POETRY_VER
       - name : Poetry patch & Publish
         run: |
           poetry version patch
