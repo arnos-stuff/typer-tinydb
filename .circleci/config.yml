@@ -54,7 +54,7 @@ jobs:
           command: |
             poetry version patch
             poetry build
-            poetry config http-basic.pypi __token__ ${PYPI_TOKEN}
+            poetry config http-basic.pypi "__token__" "pypi-${PYPI_TOKEN}"
             poetry publish
           name: Test it
 
@@ -65,7 +65,7 @@ workflows:
   test-ci:
     jobs:
       - install_and_test
-      - build_publish:
+      - codecov-job:
           requires:
             - install_and_test
           
