@@ -23,7 +23,7 @@ jobs:
   codecov-job:
     docker:
       # replace with your preferred image
-      - image: cimg/base:stable
+      - image: cimg/python:3.10
     steps:
       - codecov/upload:
           file: coverage.xml 
@@ -31,7 +31,8 @@ jobs:
   build_publish:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/configuration-reference/#executor-job
-    executor: python/default
+    docker:
+      - image: cimg/python:3.10
     steps:
       - checkout
       - python/install-packages:
