@@ -5,6 +5,8 @@ import rich
 import typer
 import socket
 import base64
+import pytest
+import codecov
 import subprocess
 from typing import Any, List, Dict
 from math import floor
@@ -283,6 +285,13 @@ def reset():
     """Reset all config values. These values are saved in the config tiny database.
     """
     globals.truncate()
+    
+@cfg.command(name='test', help='Run tests 🧪.')
+@config.command(name='test', help='Run tests 🧪.')
+def test_runs():
+    """Reset all config values. These values are saved in the config tiny database.
+    """
+    retcode = pytest.main(["--cov=./", "--cov-report=xml"])
     
     
 if __name__ == '__main__':

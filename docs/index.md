@@ -8,6 +8,8 @@ tags:
 
 ---
 
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/arnos-stuff/typer-tinydb/tree/master.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/arnos-stuff/typer-tinydb/tree/master)
+
 # A Typer config file get/set boilerplate
 
 # Using the boilerplate

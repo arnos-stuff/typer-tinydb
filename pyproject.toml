@@ -15,9 +15,7 @@ tinydb = "^4.7.1"
 
 [tool.poetry.scripts]
 typer-tinydb-config = 'typer_tinydb.typerdb:config'
-typer-configure = 'typer_tinydb.typerdb:config'
 tcfg = 'typer_tinydb.typerdb:cfg'
-tcfg-test ='pytest typer_tinydb/tests/'
 
 [tool.poetry.group.dev.dependencies]
 mkdocs = "^1.4.2"
@@ -30,6 +28,8 @@ shtab = "^1.6.1"
 mkdocs-glightbox = "^0.3.3"
 flake8 = "^6.0.0"
 pytest = "^7.3.1"
+codecov = "^2.1.13"
+pytest-cov = "^4.0.0"
 
 [build-system]
 requires = ["poetry-core"]
