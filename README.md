@@ -1,5 +1,20 @@
 # A Typer config file get/set boilerplate
 
+# A small note
+
+The docs are generated using mkdocs and mike:
+
+```python
+pip install mkdocs mike mkdocs-material
+```
+
+besides the obvious `mkdocs build` and `mkdocs gh-deploy` you should use
+
+```
+mike deploy --push --update-aliases 0.1.2 latest
+```
+where `0.1.2` is some tag
+
 # Using the boilerplate
 
 ## Aliases and subcommands

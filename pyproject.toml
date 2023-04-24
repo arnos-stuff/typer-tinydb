@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "typer-tinydb"
-version = "0.1.1"
+version = "0.1.2"
 description = "A Python Typer CLI subcommand boilerplate to manage config files using tinydb"
 authors = ["arnos-stuff <bcda0276@gmail.com>"]
 readme = "README.md"
@@ -21,6 +21,12 @@ tcfg = 'typer_tinydb.typerdb:cfg'
 [tool.poetry.group.dev.dependencies]
 mkdocs = "^1.4.2"
 mkdocs-dracula-theme = "^1.0.4"
+mkdocs-material = "^9.1.7"
+pillow = "^9.5.0"
+cairosvg = "^2.7.0"
+mike = "^1.1.2"
+shtab = "^1.6.1"
+mkdocs-glightbox = "^0.3.3"
 
 [build-system]
 requires = ["poetry-core"]

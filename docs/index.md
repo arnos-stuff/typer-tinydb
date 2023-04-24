@@ -1,3 +1,13 @@
+---
+tags:
+    - python
+    - typer
+    - cli
+    - rich
+    - boilerplate
+
+---
+
 # A Typer config file get/set boilerplate
 
 # Using the boilerplate
@@ -86,4 +96,4 @@ globals.upsert({
 ```
 # Commands
 
-Go check out the [commands page 🚀](/docs/commands.md)
+Go check out the [commands page 🚀](commands.md)

@@ -6,3 +6,4 @@ site/*.html
 site
 *.css
 *.js
+.cache

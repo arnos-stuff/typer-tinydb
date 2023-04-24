@@ -11,7 +11,7 @@ I also work a lot with [SQL](https://en.wikipedia.org/wiki/SQL) at my current jo
 
 Here's a picture of my workplace (and [some others I took in the area][3]):
 
-![](https://i.imgur.com/Bjj0AGm.png)
+![](https://i.imgur.com/Bjj0AGm.png){ loading=lazy }
 
 ## What I'm working on
 
@@ -33,7 +33,7 @@ That's a lot ! But I also have some personnal matters ...
 
 I'm a proud [Aspie / Neurodivergent person][4], I received an official diagnosis from [Hôpital Saint-Anne](https://www.hopital-saint-anne.fr/) in Paris, France a year or so ago. They're considered a bit competent on the topic so I trust them.
 
-![](https://i.imgur.com/3bVPml7.png)
+![](https://i.imgur.com/3bVPml7.png){ loading=lazy }
 
 I'm also most probably trans 🏳️‍⚧️, but I'm not sure 100% yet. I'm currently trying to figure out how to go about it, the process is a bit complicated in France, but it's a work in progress.
 

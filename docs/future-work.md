@@ -1,3 +1,10 @@
+---
+tags:
+    - Future Work
+    - Contributing
+    - Help Wanted
+---
+
 # Future updates
 
 The idea is to add some extra features like
