@@ -22,10 +22,11 @@ jobs:
       - run:
           command: |
             poetry run pytest --cov=./ --cov-report=xml
-            mkdir /workspace
-            mv coverage.xml /workspace/coverage.xml
+            sudo mkdir /workspace
+            sudo mv coverage.xml /workspace/coverage.xml
           name: Test it
       - persist_to_workspace:
+          name: Persist the codecov XML
           root: /workspace
           paths:
             - coverage.xml
@@ -35,8 +36,10 @@ jobs:
       - image: cimg/python:3.10
     steps:
       - attach_workspace:
+          name: fetch the codecov file
           at: /tmp/workspace
       - codecov/upload:
+          name: Upload it
           file: /tmp/workspace/coverage.xml
           token: CODECOV_TOKEN
   build_publish:
