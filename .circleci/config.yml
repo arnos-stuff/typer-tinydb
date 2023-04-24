@@ -39,7 +39,6 @@ jobs:
           name: fetch the codecov file
           at: /tmp/workspace
       - codecov/upload:
-          name: Upload it
           file: /tmp/workspace/coverage.xml
           token: CODECOV_TOKEN
   build_publish:
