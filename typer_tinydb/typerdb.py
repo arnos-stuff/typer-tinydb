@@ -6,6 +6,7 @@ import typer
 import socket
 import base64
 import subprocess
+from typing import Any, List, Dict
 from math import floor
 from pathlib import Path
 from rich.console import Console
@@ -17,7 +18,9 @@ from tinydb import TinyDB, Query, where
 
 
 __all__ = [
-    'renderQuery', 'TinyDB', 'Query', 'config', 'cfg', 'db', 'globals', 'where'
+    'renderQuery', 'TinyDB', 'Query', 'config', 'cfg',
+    'db', 'globals', 'where', 'upsert_param', 'getValue',
+    'getKey'
 ]
 
 console = rich.console.Console()
@@ -36,12 +39,34 @@ configFile.touch()
 # configFile = absolute_config / 'config.json'
 
 db = TinyDB(configFile)
+"""The tiny database"""
 
 globals = db.table('globals')
+"""The global config variable table"""
 
 ## Render results in terminal using Rich Tables
 
-def renderQuery(results, large_columns:list=None, first:str = 'param', last: str = 'value'):
+def renderQuery(
+    results:List[Dict[str,Any]],
+    large_columns:List[str]=None,
+    first:str = 'param',
+    last: str = 'value',
+    decode: bool = True,
+    ):
+    """Renders a TinyDB Query into a Rich Table
+
+    Args:
+        results (List[Dict[str,Any]]): Results of a TinyDB Query, in the form of a list of dicts.
+        large_columns (List[str], optional): List of columns which should be given more width, 20% of terminal to be exact. Defaults to None.
+        first (str, optional): The first column to display in the table. Defaults to 'param'.
+        last (str, optional): The last column to display in the table. Defaults to 'value'.
+
+    Raises:
+        ValueError: If the results do not correspond to tinydb-like query output, raises ValueError
+
+    Returns:
+        rich.Table: A rich renderable with the 
+    """
     if not large_columns:
         large_columns = ['param', 'value']
     if isinstance(results, (tuple,list)):
@@ -82,8 +107,9 @@ def renderQuery(results, large_columns:list=None, first:str = 'param', last: str
         else:
             table.add_column(col.capitalize(), width=standard_width, justify=justify, style=f"{next(colors)}")
 
+    tf = (lambda col : deobfuscate_json(str(col))) if decode else (lambda col : str(col))
     for row in results:
-        srow = [row[c] for c in columns]
+        srow = [tf(row[c]) for c in columns]
         table.add_row(*srow)
 
     return table
@@ -112,33 +138,105 @@ cfg = typer.Typer(
 # utils:
 
 def obfuscate_json(json_data):
+    """This function obfuscates a JSON object by encoding it as base64 and prepending the string 'OBFS::'
+    The JSON object is passed as an argument to the function
+    The function converts the JSON object to a string using the json.dumps() method
+    The string is then prepended with the string 'OBFS::'
+    The function then encodes the string using base64 encoding
+    The function then returns the encoded string"""
     strjson = json.dumps(json_data)
+    strjson = 'OBFS::'+strjson
     obfuscated = base64.b64encode(strjson.encode('utf-8'))
     return obfuscated.decode('utf-8')
 
+
 def deobfuscate_json(obfuscated):
-    decoded = base64.b64decode(obfuscated.encode('utf-8'))
-    return json.loads(decoded.decode('utf-8'))
+    """Deobfuscates a JSON string that has been obfuscated using the obfuscate_json() function.
+    
+    Parameters
+    ----------
+    obfuscated : str
+        A string that has been obfuscated using the obfuscate_json() function.
+    
+    Returns
+    -------
+    dict or list or str
+        The deobfuscated JSON string.
+    """
+    if len(obfuscated) < 4 or len(obfuscated) % 4 == 1:
+        return obfuscated
+    try:
+        decoded = base64.b64decode(obfuscated.encode('utf-8'))
+        return json.loads(decoded.decode('utf-8')[6:])
+    except Exception as err:
+        # wasn't obfuscated using this method, return original value
+        return str(obfuscated)
+
+def upsert_param(param:str, value:Any, obfuscate: bool = False):
+    '''
+    This function is used to upsert a parameter (param) and its corresponding value (value) to the global database.
+    The function takes in 3 parameters: param, value, and obfuscate. 
+    The param parameter is a string that contains the parameter name. 
+    The value parameter can take in any type of value, and it contains the value to be upserted to the database.
+    The obfuscate parameter is a boolean value that determines if the parameter and its corresponding value will be obfuscated before being stored in the database.
+    The function first creates a Query object called Param.
+    It then checks if the obfuscate parameter is set to True. If it is, then the param and value parameters are obfuscated before being stored in the database. 
+    If it is not, then the param and value parameters are not obfuscated before being stored in the database.
+    The function then upserts the param and value to the database, and also stores the timestamp, machine, and obfuscated parameters.
+    '''
+    Param = Query()
+    if obfuscate:
+        obfs_value = obfuscate_json(value)
+        obfs_param = obfuscate_json(param)
+    else:
+        obfs_value = value
+        obfs_param = param
+    globals.upsert({
+        "param": obfs_param,
+        "value": obfs_value,
+        "timestamp": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+        "machine": socket.gethostname(),
+        "obfuscated": obfuscate
+        },
+        Param.param == obfs_param
+    )
+
+def getKey(param:str):
+    """search for obfuscated params with matching deobfuscated values
+    or search for non-obfuscated params with matching values
+    return the results"""
+
+    Q = Query()
+    returns = globals.search(
+        ((Q.param.map(deobfuscate_json) == param) & (Q.obfuscated == True)) |
+        ((Q.param == param) & (Q.obfuscated == False))
+        )
+    return returns
+
+def getValue(param:str, decode:bool = True):
+    values = [str(deobfuscate_json(str(p['value']))) if decode else str(p['value']) for p in getKey(param=param)]
+    if len(values) > 0:
+        if len(values) > 1:
+            return values
+        else:
+            return values.pop()
+    else:
+        return ''
 
 @cfg.command(name='set', help='Set a config value.', no_args_is_help=True)
 @config.command(name='set', help='Set a config value.', no_args_is_help=True)
 def setter(
     param: str = typer.Argument(..., help = 'The parameter to set.'),
     value: str = typer.Argument(..., help='The value to set the parameter to.'),
+    obfuscate: bool = typer.Option(
+        False, '-k', '--obfuscate',
+        help='Whether to make the key and param impossible to read without postprocessing. Not a replacement for cryptography, but makes it safer.')
     ):
     """Set a config value. These values are saved in the config tiny database.
     """
-    Param = Query()
-    globals.upsert({
-        "param": param,
-        "value": value,
-        "timestamp": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
-        "machine": socket.gethostname(),
-        },
-        Param.param == param
-    )
-    
-    console.print(f'[bold green]✅ Set {param} to {value}[/]')
+    upsert_param(param=param, value=value, obfuscate=obfuscate)
+    obf_fmt = f"[red]{obfuscate}[/red]" if not obfuscate else f"[green]{obfuscate}[/green]"
+    console.print(f'[bold green]✅ Set {param} to {value}[/] [dim][magenta](obfuscate=[/magenta]{obf_fmt})[/dim]')
 
 @cfg.command(name='get', help='Get a config value.')
 @config.command(name='get', help='Get a config value.')
@@ -154,7 +252,7 @@ def getter(
         console.print(configFile.resolve())
         return typer.Exit(0)
     else:
-        returns = globals.search(where('param') == param)
+        returns = getKey(param)
         if len(returns):
             table = renderQuery(results=returns)
             if table:
@@ -166,11 +264,13 @@ def getter(
 
 @cfg.command(name='list', help='List all config values.')
 @config.command(name='list', help='List all config values.')
-def lister():
+def lister(
+        decode: bool = typer.Option(False,'-k', '--decode', help='Whether to list the obfuscated key/value pairs in clear text')
+    ):
     """List all config values. These values are saved in the config tiny database.
     """
     rows = globals.all()
-    table = renderQuery(results=rows)
+    table = renderQuery(results=rows, decode = decode)
 
     if not table:
         console.print(f'[dim blue]🕵️‍♀️ Seems your settings file is empty[/]')
