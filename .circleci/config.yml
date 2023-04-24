@@ -34,9 +34,6 @@ jobs:
     docker:
       # replace with your preferred image
       - image: cimg/python:3.10
-    
-    requires:
-      - install_and_test
     steps:
       - attach_workspace:
           name: fetch the codecov file
@@ -64,10 +61,14 @@ jobs:
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
+  version: 2
   test-ci:
     jobs:
       - install_and_test
-      - codecov-job
+      - build_publish:
+          requires:
+            - install_and_test
+          
   publish:
     jobs:
       - build_publish
