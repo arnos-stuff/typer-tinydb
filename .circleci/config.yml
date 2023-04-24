@@ -27,7 +27,8 @@ jobs:
     executor: python/default # use the default executor defined within the orb
     steps:
       - checkout # checkout source code
-      - python/install-packages:
+      - run:
+          name: Install using Poetry
           command: poetry install
       - persist_to_workspace:
           root: ~/project
@@ -40,7 +41,7 @@ jobs:
     steps:
       - codecov/upload:
           file: coverage.xml 
-          token: 3a6d99b2-0c4b-4e82-8758-7f8864383149
+          token: CODECOV_TOKEN
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
@@ -48,5 +49,5 @@ workflows:
   say-hello-workflow:
     jobs:
       - install_and_test
-      - build_and_upload
+      - build_and_test
       - codecov-job
