@@ -340,6 +340,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#insert-upsert" class="md-nav__link">
+    Insert / Upsert
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-keys-values" class="md-nav__link">
+    Get Keys / Values
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -384,7 +406,26 @@
 
 
 <h1 id="functions-to-directly-interact-with-the-database">Functions to directly interact with the database<a class="headerlink" href="#functions-to-directly-interact-with-the-database" title="Permanent link">&para;</a></h1>
-<p>To insert a new value, the easiest is to use the <code>upsert_param</code></p>
+<h2 id="insert-upsert">Insert / Upsert<a class="headerlink" href="#insert-upsert" title="Permanent link">&para;</a></h2>
+<p>To insert a new value, the easiest is to use the <code>upsert_param</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">def</span> <span class="nf">upsert_param</span><span class="p">(</span><span class="n">param</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="n">Any</span><span class="p">,</span> <span class="n">obfuscate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+<p>This function is used to upsert a parameter (<code>param</code>) and its corresponding value (<code>value</code>) to the global database.
+The function takes in 3 parameters: <code>param</code>, <code>value</code>, and <code>obfuscate</code>. </p>
+<ul>
+<li>The <code>param</code> parameter is a string that contains the parameter name. </li>
+<li>The <code>value</code> parameter can take in any type of value, and it contains the value to be upserted to the database.</li>
+<li>The <code>obfuscate</code> parameter is a boolean value that determines if the parameter and its corresponding value will be obfuscated before being stored in the database.</li>
+</ul>
+<p>The function uses the usual <code>Query()</code> and <code>db.search(..)</code> from <a href="tinydb.readthedocs.io">tinydb</a>.</p>
+<p>The function upserts the <code>param</code> and <code>value</code> to the database, and also stores the <code>timestamp</code>, <code>machine</code>, and a boolean to indicate wether parameters are obfuscated.</p>
+<h2 id="get-keys-values">Get Keys / Values<a class="headerlink" href="#get-keys-values" title="Permanent link">&para;</a></h2>
+<p>There are two pre-made functions: <code>getKey</code> and <code>getValue</code>. The key difference is as follows:</p>
+<ul>
+<li></li>
+</ul>
 
 
 
