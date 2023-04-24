@@ -3,14 +3,15 @@
 version: 2.1
 orbs:
   codecov: codecov/codecov@3.0.0
-  python: circleci/python@1.0.0
+  python: circleci/python@2.0.0
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
   install_and_test:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/configuration-reference/#executor-job
-    executor: python/default
+    docker:
+      - image: cimg/python:3.10
     steps:
       - checkout
       - python/install-packages:
