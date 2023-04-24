@@ -46,8 +46,10 @@ jobs:
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  test-ci:
     jobs:
       - install_and_test
       - codecov-job
+  publish:
+    jobs:
       - build_publish
