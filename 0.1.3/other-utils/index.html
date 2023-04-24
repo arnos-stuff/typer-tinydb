@@ -486,7 +486,7 @@ The function takes in 3 parameters: <code>param</code>, <code>value</code>, and 
 <li>The <code>value</code> parameter can take in any type of value, and it contains the value to be upserted to the database.</li>
 <li>The <code>obfuscate</code> parameter is a boolean value that determines if the parameter and its corresponding value will be obfuscated before being stored in the database.</li>
 </ul>
-<p>The function uses the usual <code>Query()</code> and <code>db.search(..)</code> from <a href="tinydb.readthedocs.io">tinydb</a>.</p>
+<p>The function uses the usual <code>Query()</code> and <code>db.search(..)</code> from <a href="https://tinydb.readthedocs.io">tinydb</a>.</p>
 <p>The function upserts the <code>param</code> and <code>value</code> to the database, and also stores the <code>timestamp</code>, <code>machine</code>, and a boolean to indicate wether parameters are obfuscated.</p>
 <h2 id="get-keys-values">Get Keys / Values<a class="headerlink" href="#get-keys-values" title="Permanent link">&para;</a></h2>
 <p>There are two pre-made functions: <code>getKey</code> and <code>getValue</code>. The key difference is as follows:</p>
