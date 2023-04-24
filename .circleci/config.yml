@@ -22,11 +22,11 @@ jobs:
       - run:
           command: |
             poetry run pytest --cov=./ --cov-report=xml
-            mkdir -p /tmp/artifacts/
-            mv coverage.xml workspace/coverage.xml
+            mkdir /workspace
+            mv coverage.xml /workspace/coverage.xml
           name: Test it
       - persist_to_workspace:
-          root: workspace
+          root: /workspace
           paths:
             - coverage.xml
   codecov-job:
@@ -52,7 +52,7 @@ jobs:
           command: |
             poetry version patch
             poetry build
-            poetry config pypi-token.pypi ${PYPI_TOKEN}
+            poetry config http-basic.pypi __token__ ${PYPI_TOKEN}
             poetry publish
           name: Test it
 
