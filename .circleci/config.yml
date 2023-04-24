@@ -3,37 +3,22 @@
 version: 2.1
 orbs:
   codecov: codecov/codecov@3.0.0
-  python: circleci/python@2.0.3
-  poetry: talkiq/poetry@4.0.1
+  python: circleci/python@1.0.0
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
   install_and_test:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/configuration-reference/#executor-job
-    docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/configuration-reference/#steps
+    executor: python/default
     steps:
       - checkout
+      - python/install-packages:
+          pkg-manager: poetry
       - run:
-          name: Poetry install
           command: |
-            poetry install
-            cfg test
-            codecov
-  build_and_test: # this can be any name you choose
-    executor: python/default # use the default executor defined within the orb
-    steps:
-      - checkout # checkout source code
-      - run:
-          name: Install using Poetry
-          command: poetry install
-      - persist_to_workspace:
-          root: ~/project
-          paths:
-            - .
+            poetry run pytest --cov=./ --cov-report=xml
+          name: Test it
   codecov-job:
     docker:
       # replace with your preferred image
@@ -42,6 +27,21 @@ jobs:
       - codecov/upload:
           file: coverage.xml 
           token: CODECOV_TOKEN
+  build_publish:
+    # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/configuration-reference/#executor-job
+    executor: python/default
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: poetry
+      - run:
+          command: |
+            poetry version patch
+            poetry build
+            poetry config pypi-token.pypi ${{ PYPI_TOKEN }}
+            poetry publish
+          name: Test it
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
@@ -49,5 +49,5 @@ workflows:
   say-hello-workflow:
     jobs:
       - install_and_test
-      - build_and_test
       - codecov-job
+      - build_publish
