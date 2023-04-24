@@ -23,15 +23,21 @@ jobs:
           command: |
             poetry run pytest --cov=./ --cov-report=xml
             mkdir -p /tmp/artifacts/
-            mv coverage.xml /tmp/artifacts/coverage.xml
+            mv coverage.xml workspace/coverage.xml
           name: Test it
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - coverage.xml
   codecov-job:
     docker:
       # replace with your preferred image
       - image: cimg/python:3.10
     steps:
+      - attach_workspace:
+          at: /tmp/workspace
       - codecov/upload:
-          file: /tmp/artifacts/coverage.xml
+          file: /tmp/workspace/coverage.xml
           token: CODECOV_TOKEN
   build_publish:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
@@ -46,7 +52,7 @@ jobs:
           command: |
             poetry version patch
             poetry build
-            poetry config pypi-token.pypi ${ PYPI_TOKEN }
+            poetry config pypi-token.pypi ${PYPI_TOKEN}
             poetry publish
           name: Test it
 
