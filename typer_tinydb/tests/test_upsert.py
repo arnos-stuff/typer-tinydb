@@ -1,5 +1,5 @@
 from random import shuffle, seed
-from ..typerdb import db, globals, where, Query, upsert_param, getKey, getValue
+from ..utils import db, globals, where, Query, upsert_param, getKey, getValue
 
 # use the db to find the user
 # find the user in the globals table

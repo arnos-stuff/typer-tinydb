@@ -4,8 +4,9 @@ repo_url: https://github.com/arnos-stuff/typer-tinydb/
 repo_name: typer-tinydb
 
 plugins:
-  - social
-  - tags
+- social
+- tags:
+    tags_file: tags.md
 
 site_dir: site/typer-tinydb/
 
@@ -14,39 +15,47 @@ extra:
   version:
     provider: mike
   social:
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/arno_shae
-    - icon: fontawesome/brands/python
-      link: https://pypi.org/user/arnos-stuff/
-    - icon: fontawesome/brands/docker
-      link: https://hub.docker.com/u/arnoveldock
-    - icon: fontawesome/brands/discord
-      link: https://discord.com/users/724287271364198520
+  - icon: fontawesome/brands/twitter
+    link: https://twitter.com/arno_shae
+  - icon: fontawesome/brands/python
+    link: https://pypi.org/user/arnos-stuff/
+  - icon: fontawesome/brands/docker
+    link: https://hub.docker.com/u/arnoveldock
+  - icon: fontawesome/brands/discord
+    link: https://discord.com/users/724287271364198520
 
 markdown_extensions:
-  - markdown.extensions.abbr
-  - markdown.extensions.admonition
-  - markdown.extensions.attr_list
-  - markdown.extensions.md_in_html
-  - pymdownx.highlight:
-      anchor_linenums: true
-      linenums: true
-      use_pygments: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
-  - toc:
-      permalink: true
-  - tables
+- markdown.extensions.abbr
+- markdown.extensions.admonition
+- markdown.extensions.attr_list
+- markdown.extensions.md_in_html
+
+- pymdownx.highlight:
+    anchor_linenums: true
+    linenums: true
+    use_pygments: true
+- pymdownx.inlinehilite
+- pymdownx.snippets
+- pymdownx.superfences
+- toc:
+    permalink: true
+- tables
 
 nav:
-    - Home: index.md
-    - Commands: commands.md
-    - Other Library Utils: other-utils.md
-    - Contributing: future-work.md
-    - Tags: tags.md
-    - How to build your own docs: how-to-docs.md
-    - About: about.md
+- Home: index.md
+- Commands: commands.md
+- Other Library Utils: other-utils.md
+- Utils documentation:
+  - Index: sources/refs.md
+  - Getters: sources/getters.md
+  - Setters: sources/setters.md
+  - Renderers: sources/renderers.md
+- Contributing: future-work.md
+- Changelog & Versions: versioning.md
+- Tags: tags.md
+- How to build your own docs: how-to-docs.md
+- About: about.md
+
 theme:
   name: material
   font:
@@ -55,32 +64,32 @@ theme:
   logo: assets/Wide-Logo-SM.svg
   favicon: assets/blob48.png
   features:
-    - navigation.footer
+  - navigation.footer
 
   palette:
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: deep purple
-      accent: pink
-      toggle:
-        icon: material/palette-swatch-outline
-        name: Default Theme
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    primary: deep purple
+    accent: pink
+    toggle:
+      icon: material/palette-swatch-outline
+      name: Default Theme
+  - scheme: slate
     # Palette toggle for dark mode
-    - scheme: slate
-      primary: indigo
-      accent: teal
-      toggle:
-        icon: material/format-color-fill
-        name: Switch to light mode
-    - media: "(prefers-color-scheme: dark)"
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
+    primary: indigo
+    accent: teal
+    toggle:
+      icon: material/format-color-fill
+      name: Switch to light mode
+  - media: "(prefers-color-scheme: dark)"
+    toggle:
+      icon: material/brightness-auto
+      name: Switch to light mode
+  - media: "(prefers-color-scheme: light)"
     # Palette toggle for light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default 
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
+    scheme: default
+    toggle:
+      icon: material/brightness-7
+      name: Switch to dark mode
 
 dev_addr: "127.0.0.1:8000"

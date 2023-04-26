@@ -1,0 +1,31 @@
+sources_dir: docs/sources
+templates_dir: docs/reference
+repo: https://github.com/arnos-stuff/typer-tinydb #link to sources on github
+version: master #link to sources on github
+
+pages:
+- page: "getters.md"
+  source: "typer_tinydb/utils.py"
+  functions:
+  - getUserTable
+  - ugetKey
+  - getKey
+  - ugetValue
+  - getValue
+- page: "setters.md"
+  source: 'typer_tinydb/utils.py'
+  functions:
+  - upsert_param
+  - upsert_param_udb
+  - create_table
+- page: "renderers.md"
+  source: 'typer_tinydb/utils.py'
+  functions:
+  - 'renderQuery'
+  - 'tabCallback'
+  - 'renderAllTables'
+
+# creates an index page based on everything from target source
+- page: "refs.md"
+  source: "typer_tinydb/utils.py"
+  index: True

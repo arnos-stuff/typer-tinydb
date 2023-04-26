@@ -135,3 +135,57 @@ mike set-default 0.1.6
 ```
 
 Unless 0.1.6 isn't stable.
+
+# Autodoc from docstrings
+
+An advice is to also add the helpful little package here:
+
+```bash
+poetry add --group dev mkgendocs
+```
+
+You set up your `mkgendocs.yml` file similarly to what's shown on the [author's github repo](https://github.com/davidenunes/mkgendocs), and you should run in order:
+
+1) the gendocs command `gendocs --config mkgendocs.yml` to get the YAML docs
+2) adjust the `mkdocs.yml` if needed in terms of paths
+3) Run `mkdocs build` (and possibly `mkdocs serve`)
+4) Publish using [mike](https://github.com/jimporter/mike)
+
+
+## Addendum
+
+Here's my YAML config file for gendocs:
+
+```YAML
+sources_dir: docs/sources
+templates_dir: docs/reference
+repo: https://github.com/arnos-stuff/typer-tinydb #link to sources on github
+version: master #link to sources on github
+
+pages:
+- page: "getters.md"
+  source: "typer_tinydb/utils.py"
+  functions:
+  - getUserTable
+  - ugetKey
+  - getKey
+  - ugetValue
+  - getValue
+- page: "setters.md"
+  source: 'typer_tinydb/utils.py'
+  functions:
+  - upsert_param
+  - upsert_param_udb
+  - create_table
+- page: "renderers.md"
+  source: 'typer_tinydb/utils.py'
+  functions:
+  - 'renderQuery'
+  - 'tabCallback'
+  - 'renderAllTables'
+
+# creates an index page based on everything from target source
+- page: "refs.md"
+  source: "typer_tinydb/utils.py"
+  index: True
+```
