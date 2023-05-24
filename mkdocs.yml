@@ -61,8 +61,8 @@ theme:
   font:
     text: Fira Sans
     code: Fira Code
-  logo: assets/Wide-Logo-SM.svg
-  favicon: assets/blob48.png
+  logo: assets/favicon.svg
+  favicon: assets/favicon.svg
   features:
   - navigation.footer
 
