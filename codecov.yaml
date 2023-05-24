@@ -1,6 +1,9 @@
 profiling:
   critical_files_paths:
-    - typer_tinydb/typerdb.py
+  - typer_tinydb/typerdb.py
 
 comment:
   show_critical_paths: true
+
+codecov:
+  token: c311ea6c-30a0-4a46-938a-d1a48eb66a1a

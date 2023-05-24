@@ -1,0 +1,5 @@
+install:
+- poetry install
+script:
+- pytest --cov=./ --cov-report=xml
+- codecov
