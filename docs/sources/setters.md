@@ -2,7 +2,7 @@
 
 
 ### upsert_param
-[source](https://github.com/arnos-stuff/typer-tinydb\blob\master\typer_tinydb/utils.py\#L189)
+[source](https://github.com/arnos-stuff/typer-tinydb/blob/master/typer_tinydb/utils.py/#L189)
 ```python
 .upsert_param(
    param: str, value: Any, obfuscate: bool = False
@@ -24,7 +24,7 @@ The function then upserts the param and value to the database, and also stores t
 
 
 ### upsert_param_udb
-[source](https://github.com/arnos-stuff/typer-tinydb\blob\master\typer_tinydb/utils.py\#L321)
+[source](https://github.com/arnos-stuff/typer-tinydb/blob/master/typer_tinydb/utils.py/#L321)
 ```python
 .upsert_param_udb(
    table: TinyDB, param: str = ..., value: Any = ..., obfuscate: bool = False
@@ -36,7 +36,7 @@ The function then upserts the param and value to the database, and also stores t
 
 
 ### create_table
-[source](https://github.com/arnos-stuff/typer-tinydb\blob\master\typer_tinydb/utils.py\#L218)
+[source](https://github.com/arnos-stuff/typer-tinydb/blob/master/typer_tinydb/utils.py/#L218)
 ```python
 .create_table(
    table: str = ..., schema: dict = None

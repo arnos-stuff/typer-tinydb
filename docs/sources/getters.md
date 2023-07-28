@@ -2,7 +2,7 @@
 
 
 ### getUserTable
-[source](https://github.com/arnos-stuff/typer-tinydb\blob\master\typer_tinydb/utils.py\#L258)
+[source](https://github.com/arnos-stuff/typer-tinydb/blob/master/typer_tinydb/utils.py/#L258)
 ```python
 .getUserTable(
    table: str = ...
@@ -27,7 +27,7 @@ table -- the name of the table to return
 
 
 ### ugetKey
-[source](https://github.com/arnos-stuff/typer-tinydb\blob\master\typer_tinydb/utils.py\#L279)
+[source](https://github.com/arnos-stuff/typer-tinydb/blob/master/typer_tinydb/utils.py/#L279)
 ```python
 .ugetKey(
    param: str, table: str
@@ -50,7 +50,7 @@ The first thing that we do is check if the table is valid. If it is, we search f
 
 
 ### getKey
-[source](https://github.com/arnos-stuff/typer-tinydb\blob\master\typer_tinydb/utils.py\#L340)
+[source](https://github.com/arnos-stuff/typer-tinydb/blob/master/typer_tinydb/utils.py/#L340)
 ```python
 .getKey(
    param: str
@@ -66,7 +66,7 @@ return the results
 
 
 ### ugetValue
-[source](https://github.com/arnos-stuff/typer-tinydb\blob\master\typer_tinydb/utils.py\#L307)
+[source](https://github.com/arnos-stuff/typer-tinydb/blob/master/typer_tinydb/utils.py/#L307)
 ```python
 .ugetValue(
    param: str, table: str, decode: bool = True
@@ -78,7 +78,7 @@ return the results
 
 
 ### getValue
-[source](https://github.com/arnos-stuff/typer-tinydb\blob\master\typer_tinydb/utils.py\#L352)
+[source](https://github.com/arnos-stuff/typer-tinydb/blob/master/typer_tinydb/utils.py/#L352)
 ```python
 .getValue(
    param: str, decode: bool = True

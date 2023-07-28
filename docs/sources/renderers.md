@@ -2,7 +2,7 @@
 
 
 ### renderQuery
-[source](https://github.com/arnos-stuff/typer-tinydb\blob\master\typer_tinydb/utils.py\#L53)
+[source](https://github.com/arnos-stuff/typer-tinydb/blob/master/typer_tinydb/utils.py/#L53)
 ```python
 .renderQuery(
    results: List[Dict[str, Any]], large_columns: List[str] = None,
@@ -36,7 +36,7 @@ Renders a TinyDB Query into a Rich Table
 
 
 ### tabCallback
-[source](https://github.com/arnos-stuff/typer-tinydb\blob\master\typer_tinydb/utils.py\#L162)
+[source](https://github.com/arnos-stuff/typer-tinydb/blob/master/typer_tinydb/utils.py/#L162)
 ```python
 .tabCallback(
    table: TinyDB = ..., msg: str = ...
@@ -48,7 +48,7 @@ Renders a TinyDB Query into a Rich Table
 
 
 ### renderAllTables
-[source](https://github.com/arnos-stuff/typer-tinydb\blob\master\typer_tinydb/utils.py\#L173)
+[source](https://github.com/arnos-stuff/typer-tinydb/blob/master/typer_tinydb/utils.py/#L173)
 ```python
 .renderAllTables()
 ```
